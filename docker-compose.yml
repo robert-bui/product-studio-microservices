@@ -1,0 +1,217 @@
+version: '3.4'
+services:
+    couchbase:
+        image: couchbase:latest
+        ports:
+            - "8091-8094:8091-8094"
+            - "11210:11210"
+        restart: unless-stopped
+#        healthcheck:
+#          test: ["CMD", "curl","-m5" , "-f", "http://localhost:8091/ui/index.html"]
+#          interval: 30s
+#          timeout: 15s
+#          retries: 5
+#          start_period: 300s
+
+    sonarqube:
+        image: sonarqube
+        expose:
+            - 9003
+        ports:
+            - "127.0.0.1:9003:9000"
+        restart: unless-stopped
+
+    service-discovery:
+        build:
+          context: ./dms2-tool/service-discovery
+        command: sh -c '/wait-for.sh couchbase:8091 -t 100 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "5000:8080"
+        restart: unless-stopped
+        depends_on:
+          - couchbase
+#        healthcheck:
+#          test: ["CMD", "wget", "http://localhost:8080/"]
+#          interval: 30s
+#          timeout: 15s
+#          retries: 5
+#          start_period: 300s
+
+    api-gateway:
+        build:
+          context: ./dms2-tool/api-gateway
+        ports:
+          - "80:8080"
+        command: sh -c '/wait-for.sh couchbase:8091 -t 200 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        restart: unless-stopped
+        depends_on:
+          - couchbase
+
+    dms2-acl:
+        build:
+          context: ./dms2-acl
+        command: sh -c '/wait-for.sh couchbase:8091 -t 220 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "9999:8080"
+        links:
+          - couchbase
+        env_file:
+          - ./dms2-acl/acl.env
+        restart: unless-stopped
+        depends_on:
+          - couchbase
+          - service-discovery
+#        healthcheck:
+#          test: ["CMD", "wget", "http://localhost:8080/"]
+#          interval: 30s
+#          timeout: 15s
+#          retries: 5
+#          start_period: 300s
+
+    dms2-user:
+        build:
+          context: ./dms2-user
+        command: sh -c '/wait-for.sh couchbase:8091 -t 320 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "8888:8080"
+        links:
+          - couchbase
+        env_file:
+          - ./dms2-user/user.env
+        restart: unless-stopped
+        depends_on:
+          - couchbase
+          - service-discovery
+#        healthcheck:
+#          test: ["CMD", "wget", "http://localhost:8080/"]
+#          interval: 30s
+#          timeout: 15s
+#          retries: 5
+#          start_period: 300s
+
+    dms2-authentication:
+        build:
+          context: ./dms2-authentication
+        command: sh -c '/wait-for.sh couchbase:8091 -t 420 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "7777:8080"
+        links:
+          - couchbase
+        env_file:
+          - ./dms2-authentication/auth.env
+        restart: unless-stopped
+        depends_on:
+          - couchbase
+          - service-discovery
+#        healthcheck:
+#          test: ["CMD", "wget", "http://localhost:8080/"]
+#          interval: 30s
+#          timeout: 15s
+#          retries: 5
+#          start_period: 300s
+
+    dms2-product:
+        build:
+          context: ./dms2-product
+        command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "8083:8080"
+        links:
+          - couchbase
+        env_file:
+          - ./dms2-product/product.env
+        restart: unless-stopped
+        depends_on:
+          - couchbase
+          - service-discovery
+#          - partner-service
+#        healthcheck:
+#          test: ["CMD", "wget", "http://localhost:8080/"]
+#          interval: 30s
+#          timeout: 15s
+#          retries: 5
+#          start_period: 300s
+
+    dms2-provider:
+        build:
+          context: ./dms2-provider
+        command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "6667:8080"
+        links:
+          - couchbase
+        env_file:
+          - ./dms2-provider/provider.env
+        restart: unless-stopped
+        depends_on:
+          - couchbase
+          - service-discovery
+#          - image-service
+
+    dms2-template:
+        build:
+          context: ./dms2-template
+        command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "6668:8080"
+        links:
+          - couchbase
+        env_file:
+          - ./dms2-template/template.env
+        restart: unless-stopped
+        depends_on:
+          - couchbase
+          - service-discovery
+#        healthcheck:
+#          test: ["CMD", "wget", "http://localhost:8080/"]
+#          interval: 30s
+#          timeout: 15s
+#          retries: 5
+#          start_period: 300s
+
+    dms2-pmc:
+        build:
+          context: ./dms2-pmc
+        command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "8082:8080"
+        links:
+          - couchbase
+        env_file:
+          - ./dms2-pmc/pmc.env
+        restart: unless-stopped
+        depends_on:
+          - service-discovery
+#        healthcheck:
+#          test: ["CMD", "wget", "http://localhost:8080/"]
+#          interval: 30s
+#          timeout: 15s
+#          retries: 5
+#          start_period: 300s
+
+    dms2-thirdparty:
+        build:
+          context: ./dms2-thirdparty
+        command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
+        ports:
+          - "8090:8080"
+        links:
+          - couchbase
+        env_file:
+          - ./dms2-thirdparty/img.env
+        restart: unless-stopped
+        depends_on:
+          - service-discovery
+#        healthcheck:
+#          test: ["CMD", "wget", "http://localhost:8080/"]
+#          interval: 30s
+#          timeout: do15s
+#          retries: 5
+#          start_period: 300s
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.24.0.0/16

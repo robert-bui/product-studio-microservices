@@ -25,3 +25,6 @@
 [submodule "dms2-product"]
 	path = dms2-product
 	url = https://github.com/GoBear/dms2-product.git
+[submodule "dms2-tool"]
+	path = dms2-tool
+	url = https://github.com/GoBear/dms2-tool.git
