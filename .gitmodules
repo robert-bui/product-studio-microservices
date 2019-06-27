@@ -1,0 +1,27 @@
+[submodule "dms2-common"]
+	path = dms2-common
+	url = https://github.com/GoBear/dms2-common.git
+[submodule "dms2-acl"]
+	path = dms2-acl
+	url = https://github.com/GoBear/dms2-acl.git
+[submodule "dms2-thirdparty"]
+	path = dms2-thirdparty
+	url = https://github.com/GoBear/dms2-thirdparty.git
+[submodule "dms2-provider"]
+	path = dms2-provider
+	url = https://github.com/GoBear/dms2-provider.git
+[submodule "dms2-template"]
+	path = dms2-template
+	url = https://github.com/GoBear/dms2-template.git
+[submodule "dms2-authentication"]
+	path = dms2-authentication
+	url = https://github.com/GoBear/dms2-authentication.git
+[submodule "dms2-user"]
+	path = dms2-user
+	url = https://github.com/GoBear/dms2-user.git
+[submodule "dms2-pmc"]
+	path = dms2-pmc
+	url = https://github.com/GoBear/dms2-pmc.git
+[submodule "dms2-product"]
+	path = dms2-product
+	url = https://github.com/GoBear/dms2-product.git

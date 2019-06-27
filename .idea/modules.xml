@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dms2-acl/acl.iml" filepath="$PROJECT_DIR$/dms2-acl/acl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-common/acl/acl (1) (com.gobear.common).iml" filepath="$PROJECT_DIR$/dms2-common/acl/acl (1) (com.gobear.common).iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-authentication/authentication.iml" filepath="$PROJECT_DIR$/dms2-authentication/authentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-common/common-libs.iml" filepath="$PROJECT_DIR$/dms2-common/common-libs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-common/common-service/common-service.iml" filepath="$PROJECT_DIR$/dms2-common/common-service/common-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-common/google-api-support/google-api-support.iml" filepath="$PROJECT_DIR$/dms2-common/google-api-support/google-api-support.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-pmc/pmc.iml" filepath="$PROJECT_DIR$/dms2-pmc/pmc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-product/product.iml" filepath="$PROJECT_DIR$/dms2-product/product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-common/product-domain-objects/product-domain-objects.iml" filepath="$PROJECT_DIR$/dms2-common/product-domain-objects/product-domain-objects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/product-studio-microservices.iml" filepath="$PROJECT_DIR$/product-studio-microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-provider/provider.iml" filepath="$PROJECT_DIR$/dms2-provider/provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-template/template.iml" filepath="$PROJECT_DIR$/dms2-template/template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-thirdparty/thirdparty.iml" filepath="$PROJECT_DIR$/dms2-thirdparty/thirdparty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dms2-user/user.iml" filepath="$PROJECT_DIR$/dms2-user/user.iml" />
+    </modules>
+  </component>
+</project>

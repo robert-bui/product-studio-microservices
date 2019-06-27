@@ -1,0 +1,15 @@
+View contexts
+kubectl config get-contexts
+
+
+Set the context to use as docker-for-desktop
+kubectl config use-context docker-for-desktop
+
+
+To view the dashboard in your web browser
+kubectl proxy
+
+Navigate to http://localhost:8001/
+
+http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy
+

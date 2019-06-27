@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="acl" />
+        <module name="acl (1) (com.gobear.common)" />
+        <module name="authentication" />
+        <module name="common-service" />
+        <module name="google-api-support" />
+        <module name="pmc" />
+        <module name="product" />
+        <module name="product-domain-objects" />
+        <module name="provider" />
+        <module name="template" />
+        <module name="thirdparty" />
+        <module name="user" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="acl" target="1.8" />
+      <module name="acl (1) (com.gobear.common)" target="1.8" />
+      <module name="authentication" target="1.8" />
+      <module name="common-libs" target="1.5" />
+      <module name="common-service" target="1.8" />
+      <module name="google-api-support" target="1.8" />
+      <module name="pmc" target="1.8" />
+      <module name="product" target="1.8" />
+      <module name="product-domain-objects" target="1.8" />
+      <module name="product-studio-microservices" target="1.5" />
+      <module name="provider" target="1.8" />
+      <module name="template" target="1.8" />
+      <module name="thirdparty" target="1.8" />
+      <module name="user" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
