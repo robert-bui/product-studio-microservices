@@ -1,3 +1,12 @@
+Git Submodule
+git submodule status
+
+git submodule foreach --recursive git checkout develop
+git submodule foreach --recursive git pull
+
+
+
+
 View contexts
 kubectl config get-contexts
 

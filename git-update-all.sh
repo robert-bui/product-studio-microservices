@@ -1,6 +1,9 @@
 #!/bin/bash
 
+echo '$1 = ' $1
 
-echo --------------- Update all submodules ---------------
+echo --------------- Checkout all submodules to branch = $1 ---------------
+git submodule foreach --recursive git checkout $1
 
-git submodule update --remote
+echo ------------------- Git pull all submodules --------------------------
+git submodule foreach --recursive git pull

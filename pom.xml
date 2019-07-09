@@ -25,6 +25,8 @@
         <module>dms2-template</module>
         <module>dms2-thirdparty</module>
         <module>dms2-user</module>
+        <module>dms2-tool/api-gateway</module>
+        <module>dms2-tool/service-discovery</module>
     </modules>
 
     <build>
