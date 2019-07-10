@@ -47,7 +47,7 @@ services:
         depends_on:
           - couchbase
 
-    dms2-acl:
+    acl-service:
         build:
           context: ./dms2-acl
         command: sh -c '/wait-for.sh couchbase:8091 -t 220 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
@@ -68,7 +68,7 @@ services:
 #          retries: 5
 #          start_period: 300s
 
-    dms2-user:
+    user-service:
         build:
           context: ./dms2-user
         command: sh -c '/wait-for.sh couchbase:8091 -t 320 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
@@ -89,7 +89,7 @@ services:
 #          retries: 5
 #          start_period: 300s
 
-    dms2-authentication:
+    auth-service:
         build:
           context: ./dms2-authentication
         command: sh -c '/wait-for.sh couchbase:8091 -t 420 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
@@ -110,7 +110,7 @@ services:
 #          retries: 5
 #          start_period: 300s
 
-    dms2-product:
+    product-service:
         build:
           context: ./dms2-product
         command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
@@ -132,7 +132,7 @@ services:
 #          retries: 5
 #          start_period: 300s
 
-    dms2-provider:
+    partner-service:
         build:
           context: ./dms2-provider
         command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
@@ -148,7 +148,7 @@ services:
           - service-discovery
 #          - image-service
 
-    dms2-template:
+    template-service:
         build:
           context: ./dms2-template
         command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
