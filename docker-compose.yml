@@ -169,7 +169,7 @@ services:
 #          retries: 5
 #          start_period: 300s
 
-    dms2-pmc:
+    pmc-api-service:
         build:
           context: ./dms2-pmc
         command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
@@ -189,7 +189,7 @@ services:
 #          retries: 5
 #          start_period: 300s
 
-    dms2-thirdparty:
+    image-service:
         build:
           context: ./dms2-thirdparty
         command: sh -c '/wait-for.sh couchbase:8091 -t 120 -- java -cp -Djava.security.egd=file:/dev/./urandom -jar /app.jar'
